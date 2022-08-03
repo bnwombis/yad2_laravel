@@ -4,6 +4,35 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+        <canvas id="myChart" height="100px"></canvas>
+        <script type="text/javascript">
+
+            const labels = {!! $cities_stat_chart["labels_city"] !!};
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Price for m2 per city',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: {!! $cities_stat_chart["data_price_m2"] !!},
+                }]
+            };
+
+            const config = {
+                type: 'line',
+                data: data,
+                options: {}
+            };
+
+            new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        </script>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
                 <table class="table table-striped">
                     <thead>
                     <th scope="col">
