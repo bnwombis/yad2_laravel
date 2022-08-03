@@ -10,7 +10,7 @@ class CommentsController extends Controller
 {
     public function index()
     {
-        $comments = Comments::paginate(20);
+        $comments = Comments::paginate(20)->sortDesc();
         return view('comments', ["comments"=>$comments]);
 
     }
