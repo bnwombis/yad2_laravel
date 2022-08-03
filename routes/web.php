@@ -16,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/graph', [App\Http\Controllers\GraphController::class, 'index'])->name('graph_index');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
+Route::get('/graph', [App\Http\Controllers\GraphController::class, 'index'])
+    ->name('graph_index');
+Route::get('/comments', [App\Http\Controllers\CommentsController::class, 'index'])
+    ->name('comments_index');
