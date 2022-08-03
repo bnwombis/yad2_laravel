@@ -23,5 +23,9 @@ Route::get('/graph', [App\Http\Controllers\GraphController::class, 'index'])
 Route::get('/comments', [App\Http\Controllers\CommentsController::class, 'index'])
     ->name('comments_show');
 
-Route::get('/comment/add', [App\Http\Controllers\CommentsController::class, 'add'])
+Route::get('/comment/add', [App\Http\Controllers\CommentsController::class, 'add_form'])
     ->name('comment_add');
+
+Route::post('/comment/add', [App\Http\Controllers\CommentsController::class, 'create'])
+    ->name('comment_add');
+
