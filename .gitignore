@@ -14,3 +14,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/input_data/df_cities_stats.csv
