@@ -21,4 +21,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
 Route::get('/graph', [App\Http\Controllers\GraphController::class, 'index'])
     ->name('graph_index');
 Route::get('/comments', [App\Http\Controllers\CommentsController::class, 'index'])
-    ->name('comments_index');
+    ->name('comments_show');
+
+Route::get('/comment/add', [App\Http\Controllers\CommentsController::class, 'add'])
+    ->name('comment_add');

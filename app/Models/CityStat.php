@@ -11,4 +11,8 @@ class CityStat extends Model
     protected $primaryKey = 'id';
     protected $table = 'cities_ads_stats';
     public $timestamps = false;
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
 }

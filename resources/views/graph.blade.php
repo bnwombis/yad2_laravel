@@ -45,7 +45,13 @@
                         Price for m2
                     </th>
                     <th scope="col">
-                        Ads per 1k people
+                        Ads per 1k
+                    </th>
+                    <th scope="col">
+                        Comments
+                    </th>
+                    <th scope="col">
+                        Add comment
                     </th>
                     </thead>
                     <tbody>
@@ -62,6 +68,16 @@
                             </td>
                             <td>
                                 {{ $city_stat->ads_per_people_1k }}
+                            </td>
+                            <td>
+                                <a href="{{ route("comments_show", ["city_stat_id"=>$city_stat->id] ) }}">
+                                    {{ $city_stat->comments->count() }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ route("comment_add", ["city_stat_id"=>$city_stat->id] ) }}">
+                                    <button type="button" class="btn btn-primary btn-sm">Add</button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
