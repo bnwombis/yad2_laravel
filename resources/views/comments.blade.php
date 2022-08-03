@@ -27,7 +27,7 @@
                     @foreach ($comments as $comment)
                         <tr>
                             <td>
-                                {{ $comment->city_id }}
+                                {{ $comment->city_stat->city_name_en }}
                             </td>
                             <td>
                                 {{ $comment->username }}

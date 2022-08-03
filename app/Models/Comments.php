@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comments extends Model
 {
     use HasFactory;
+    public function city_stat()
+    {
+        return $this->belongsTo(CityStat::class);
+    }
 }
