@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/graph', [App\Http\Controllers\GraphController::class, 'api_index'])
+    ->name('graph_index');

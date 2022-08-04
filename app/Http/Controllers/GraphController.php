@@ -9,7 +9,7 @@ class GraphController extends Controller
 {
     public function index()
     {
-        $cities_stat = CityStat::paginate(15);
+        $cities_stat = CityStat::paginate();
 //        TODO make api for output this data
         $cities_stat_chart = [];
         $chart_labels_city = [];
@@ -22,5 +22,24 @@ class GraphController extends Controller
         $cities_stat_chart["data_price_m2"] = json_encode($chart_data_price_m2);
 //        dd($cities_stat_chart);
         return view('graph', ["cities_stat"=>$cities_stat, "cities_stat_chart" => $cities_stat_chart]);
+    }
+
+    public function api_index()
+    {
+        $cities_stat = CityStat::paginate();
+
+        $chart_labels_city = [];
+        $chart_data_price_m2 = [];
+        foreach ($cities_stat as $city_stat) {
+            $chart_labels_city[] = $city_stat["city_name_en"];
+            $chart_data_price_m2[] = $city_stat["price_m2"];
+        }
+        $output = [
+            "status"=>"ok",
+            "labels_city"=>$chart_labels_city,
+            "data_price_m2"=>$chart_data_price_m2,
+            "cities_stat"=>$cities_stat
+        ];
+        return response()->json($output);
     }
 }
