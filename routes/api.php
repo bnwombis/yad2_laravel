@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/graph', [App\Http\Controllers\GraphController::class, 'api_index'])
-    ->name('graph_index');
+    ->name('api_graph_index');

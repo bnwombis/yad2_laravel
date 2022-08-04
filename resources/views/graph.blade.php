@@ -6,28 +6,39 @@
             <div class="col-md-8">
         <canvas id="myChart" height="100px"></canvas>
         <script type="text/javascript">
+            let labels_city = {},
+                data_price_m2 = {};
+            let json_data;
+            function show_chart(json_data) {
+                // alert();
+                const data = {
+                    labels: json_data.labels_city,
+                    datasets: [{
+                        label: 'Price for m2 per city',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: json_data.data_price_m2,
+                    }]
+                };
 
-            const labels = {!! $cities_stat_chart["labels_city"] !!};
-            const data = {
-                labels: labels,
-                datasets: [{
-                    label: 'Price for m2 per city',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: {!! $cities_stat_chart["data_price_m2"] !!},
-                }]
-            };
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {}
+                };
 
-            const config = {
-                type: 'line',
-                data: data,
-                options: {}
-            };
+                new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            }
+            fetch('{{ route("api_graph_index", ["page" => $cities_stat->currentPage()]) }}')
+                .then(response => response.json())
+                .then(data =>
+                    show_chart(data)
+                )
+                .catch(error => console.log(error))
 
-            new Chart(
-                document.getElementById('myChart'),
-                config
-            );
         </script>
             </div>
         </div>
